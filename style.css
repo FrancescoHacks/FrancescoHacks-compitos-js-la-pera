@@ -1,0 +1,96 @@
+*{
+	margin: 2;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+#content{
+	max-width: 1480px;
+}
+
+#Header{
+	max-width: 1460px;
+	text-align: center;
+}
+
+#Title{
+	color: #D33E43;
+	font-size: 48px;
+	font-weight: bolder;
+}
+
+#SubTitle{
+	font-size: 24px;
+	font-weight: bolder;
+	color: #666370;
+}
+
+#Bottom{
+	max-width: 1460px;
+}
+
+.player1{
+  background-color: purple;
+}
+
+.player2{
+  background-color: blue;
+}
+
+.trisGrid{
+	display: flex;
+	flex-direction: column;
+}
+
+.row{
+	display: flex;
+}
+
+.col{
+	width: 100px;
+	height: 100px;
+	background: yellow;
+	border: 1px solid black;
+}
+
+.gridBtn{
+	display: block;
+	width: 100px;
+	height: 100px;
+}
+
+#Grill{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+#play{
+	max-width: 1000px;
+	max-height: 200px;
+	color: black;
+	font-size: 20px;
+	font-weight: bolder;
+	margin-top: 20px;
+}
+
+#cont{
+	display: flex;
+	justify-content: center;
+}
+
+
+#Reset{
+	display: flex;
+	justify-content: center;
+}
+
+#bottone{
+	margin-top: 30px;
+	width: 100px;
+	height: 50px;
+	background-color: red;
+	color: black;
+	font-weight: bolder;
+	font-size: 20px;
+}

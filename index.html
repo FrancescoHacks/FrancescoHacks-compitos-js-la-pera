@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
 	 <meta charset="UTF-8">
   	 <meta name="description" content="Free Web tutorials">
  	 <meta name="keywords" content="HTML, CSS, JavaScript">
  	 <meta name="author" content="John Doe">
  	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	 <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="static/css/style.css">
 <title>
 		
@@ -13,70 +19,142 @@
 </head>
 <body>
 	
-	<div id="output">
+
+	<div id="Content">
+		<div id="Header">
+			<div id="Title">
+				GIOCO TRIS
+			</div>
+			<div id="SubTitle">
+				In questa pagina sarà possibile giocare a tris con un tuo amcio. Si gioca su una griglia quadrata di 3×3 caselle.
+				A turno, i giocatori scelgono una cella vuota e vi disegnano il proprio simbolo. Vince il giocatore che riesce a disporre tre dei propri simboli in linea retta orizzontale, verticale o diagonale. Se la griglia viene riempita senza che nessuno dei giocatori sia riuscito a completare una linea retta di tre simboli, il gioco finisce in parità.
+			</div>
+		</div>
+
+		
+
+		<div id="Bottom">
+
+			<div id="Grill">
+				
+			<div class="trisGrid">
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="0" data-col="0"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="0" data-col="1"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="0" data-col="2"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="1" data-col="0"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="1" data-col="1"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="1" data-col="2"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="2" data-col="0"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="2" data-col="1"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn" data-row="2" data-col="2"></a>
+			</div>
+		</div>
+	</div>	
+
+			</div>	
+		</div>
+
+	<div id="cont">
+			<div id="play">
+			
+		</div>
+	</div>
+	
+
+		<div id="End">
+			<div id="Reset">
+				<button id="bottone">
+					<a href="#">Reset</a>
+					
+				</button>
+			</div>
+			
+		</div>
+
+	</div>
+		
 		
 	</div>
-
-	<button id="yellow">
-		giallo
-	</button>
-
-	<button id="green">
-		verde
-	</button>
-
-	<button id="blue">
-		blu
-	</button>
-
-	<button id="red">
-		rosso
-	</button>
-
- <form>
- 	<div> colore:</div>
- 	<input type="text" id="fname" name="fname">
- 	<button id="send"> invia </button>
- </form>
 
 
 
 	<script type="text/javascript">
-		
-		let ot = document.querySelector("#output")
-		let green = document.querySelector("#green")
-		let yellow = document.querySelector("#yellow")
-		let blue = document.querySelector("#blue")
-		let red = document.querySelector("#red")
-		let input = document.querySelector("#fname")
-		let send = document.querySelector("#send")
-		function color(colore){
-				document.getElementById("output").style.backgroundColor = colore;
+
+		let grid = [[null,null,null],
+						 	  [null,null,null],
+						 	  [null,null,null]]
+	let links = document.querySelectorAll(".gridBtn"),
+			currentPlayer = 1,
+    cellIsOccupied = true
+    let play = document.querySelector("#play")
+    let bottone = document.querySelector("#bottone")
+
+            document.getElementById("play").innerHTML = "Tocca al player " + currentPlayer
+
+
+		for(let i = 0; i < links.length; i++){
+			let link = links[i]
+			link.addEventListener("click", function(e){
+				e.preventDefault()
+        cellIsOccupied = e.currentTarget.classList.contains("player2") || e.currentTarget.classList.contains("player1")	;			
+        
+        console.log(cellIsOccupied)
+				if(cellIsOccupied === false){
+          e.currentTarget.classList.toggle("player"+currentPlayer)
+          
+          if(currentPlayer === 1){
+
+            currentPlayer = 2
+            document.getElementById("play").innerHTML = "Tocca al player " + currentPlayer
+          }else{
+            currentPlayer = 1
+            document.getElementById("play").innerHTML = "Tocca al player " + currentPlayer
+          }
+        }
+
+        let colonna = parseInt(e.currentTarget.dataset.col)
+				let riga = parseInt(e.currentTarget.dataset.row)
+				if(currentPlayer === 1){
+					grid[riga][colonna] = "X"
+				}else{
+					grid[riga][colonna] = "O"
+				}
+			
+
+			})
 		}
 
-		green.addEventListener("click",function(event) {
-			event.preventDefault()
-			color(event.currentTarget.id)
-		})
 
-		yellow.addEventListener("click",function(event) {
-			event.preventDefault()
-			color(event.currentTarget.id)
-		})
+			
+			
+		
 
-		blue.addEventListener("click",function(event) {
-			event.preventDefault()
-			color(event.currentTarget.id)
-		})
 
-		red.addEventListener("click",function(event) {
-			event.preventDefault()
-			color(event.currentTarget.id)
-		})
+		bottone.addEventListener("click", function(e){
 
-		send.addEventListener("click", function(event){
-			event.preventDefault()
-			color(input.value);
+			location.reload()
 
 		})
 
